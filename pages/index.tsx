@@ -1,9 +1,12 @@
 import type { NextPage } from "next";
-import Head from "next/head";
-import Image from "next/image";
+import styled from "styled-components";
+
+const Title = styled.h1`
+  color: red;
+`;
 
 const Home: NextPage = () => {
-  return <h1>Ticked</h1>;
+  return <Title>Ticked</Title>;
 };
 
 export default Home;
