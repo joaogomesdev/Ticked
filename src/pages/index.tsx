@@ -10,7 +10,7 @@ import {
 import type { NextPage } from "next";
 
 const Home: NextPage = () => {
-  const { colorMode, toggleColorMode } = useColorMode();
+  const { colorMode } = useColorMode();
 
   return (
     <Flex flexDir="column" width="full">

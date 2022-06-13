@@ -1,8 +1,9 @@
 // pages/_app.js
-import { ChakraProvider } from "@chakra-ui/react";
 import { AppProps } from "next/app";
-import { AppShell } from "../components/AppShell";
+import { ChakraProvider } from "@chakra-ui/react";
+
 import { theme } from "../styles/theme";
+import { AppShell } from "../components/AppShell";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
