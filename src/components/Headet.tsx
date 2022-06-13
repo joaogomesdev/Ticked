@@ -10,11 +10,15 @@ import {
 import React from "react";
 import Link from "next/link";
 import { RiMoonClearFill, RiSunFill } from "react-icons/ri";
+import { NavLink } from "./NavLink";
+import { useRouter } from "next/router";
 
 interface Props {}
 
 export const Header = ({}: Props) => {
+  const router = useRouter();
   const { colorMode, toggleColorMode } = useColorMode();
+
   return (
     <Flex
       width="full"
@@ -23,18 +27,19 @@ export const Header = ({}: Props) => {
       alignItems="center"
       paddingX={28}
     >
-      <Heading textDecoration="underline">Ticked</Heading>
+      <Link href={"/"}>
+        <Heading
+          cursor="pointer"
+          textDecoration={router.pathname === "/" ? "underline" : "none"}
+        >
+          Ticked
+        </Heading>
+      </Link>
       <Flex alignItems="center" justifyContent="space-between">
         <Stack spacing={6} isInline mr={6}>
-          <Link href="/docs">
-            <ChakraLink>Docs</ChakraLink>
-          </Link>
-          <Link href="/cases">
-            <ChakraLink>Cases</ChakraLink>
-          </Link>
-          <Link href="/pricing">
-            <ChakraLink>Pricing</ChakraLink>
-          </Link>
+          <NavLink name="Docs" to="/docs" />
+          <NavLink name="Cases" to="/cases" />
+          <NavLink name="Pricing" to="/pricing" />
         </Stack>
         <IconButton
           borderColor={
