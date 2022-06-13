@@ -28,6 +28,7 @@ const theme = {
     bold: 700,
   },
   initialColorMode: "dark",
+  useSystemColorMode: false,
 };
 
 export { theme };
