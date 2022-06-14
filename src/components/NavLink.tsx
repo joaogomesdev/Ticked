@@ -10,7 +10,6 @@ interface Props {
 
 export const NavLink = ({ name, to }: Props) => {
   const { pathname } = useRouter();
-  console.log(to, name);
 
   return (
     <Link href={to}>
