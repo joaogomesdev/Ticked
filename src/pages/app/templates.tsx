@@ -10,7 +10,7 @@ interface Props {}
 const Templates = ({}: Props) => {
   const data: never[] = [];
 
-  if (data) {
+  if (!data) {
     return (
       <DashboardShell>
         <TicketTemplatesTableHeader />

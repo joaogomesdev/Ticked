@@ -6,6 +6,7 @@ import {
   Flex,
   Heading,
 } from "@chakra-ui/react";
+import { AddEventModal } from "./AddEventModal";
 
 const EventTableHeader = () => {
   return (
@@ -17,9 +18,7 @@ const EventTableHeader = () => {
       </Breadcrumb>
       <Flex justifyContent="space-between">
         <Heading mb={8}>My events</Heading>
-        <Button border="2px" variant="outline">
-          New event
-        </Button>
+        <AddEventModal>New event</AddEventModal>
       </Flex>
     </>
   );
