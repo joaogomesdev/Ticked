@@ -3,14 +3,14 @@ import { AppProps } from "next/app";
 import { ChakraProvider } from "@chakra-ui/react";
 
 import { theme } from "../styles/theme";
-import { AppShell } from "../components/AppShell";
+import { SessionProvider } from "next-auth/react";
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   return (
     <ChakraProvider theme={theme}>
-      <AppShell>
+      <SessionProvider session={session} refetchInterval={5 * 60}>
         <Component {...pageProps} />
-      </AppShell>
+      </SessionProvider>
     </ChakraProvider>
   );
 }

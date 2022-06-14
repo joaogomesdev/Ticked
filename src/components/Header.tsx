@@ -12,13 +12,18 @@ import Link from "next/link";
 import { RiMoonClearFill, RiSunFill } from "react-icons/ri";
 import { NavLink } from "./NavLink";
 import { useRouter } from "next/router";
+import { signIn, useSession } from "next-auth/react";
 
 interface Props {}
 
 export const Header = ({}: Props) => {
   const router = useRouter();
+  const { data: session } = useSession();
   const { colorMode, toggleColorMode } = useColorMode();
 
+  async function handleDashboard() {
+    await router.push("/app");
+  }
   return (
     <Flex
       width="full"
@@ -53,7 +58,16 @@ export const Header = ({}: Props) => {
           size="md"
           mr={4}
         />
+
         <Button
+          onClick={
+            session?.user
+              ? handleDashboard
+              : () =>
+                  signIn("github", {
+                    callbackUrl: "/app",
+                  })
+          }
           borderColor={
             colorMode === "light" ? "blackAlpha.900" : "whiteAlpha.900"
           }
@@ -63,7 +77,7 @@ export const Header = ({}: Props) => {
           bgColor={colorMode === "light" ? "transparent" : "#FFFFFF"}
           textColor={colorMode === "light" ? "#000000" : "#000000"}
         >
-          Dashboard
+          {session?.user ? "Dashboard" : "Sign in"}
         </Button>
       </Flex>
     </Flex>

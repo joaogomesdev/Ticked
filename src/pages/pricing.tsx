@@ -1,9 +1,10 @@
+import { LandingShell } from "components/LandingShell";
 import React from "react";
 
 interface Props {}
 
 export const Pricing = ({}: Props) => {
-  return <div></div>;
+  return <LandingShell>Pricing</LandingShell>;
 };
 
 export default Pricing;

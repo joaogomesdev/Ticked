@@ -1,0 +1,176 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String?   @unique
+  emailVerified DateTime?
+  image         String?
+  accounts      Account[]
+  sessions      Session[]
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+model Company {
+  id      String @id @default(uuid())
+  slug    String
+  plan    String
+  name    String
+  logoUrl String
+  bio     String
+
+  events Event[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Visitor {
+  id        String @id @default(uuid())
+  name      String
+  email     String
+  avatarUrl String
+  bio       String
+
+  tickets      Ticket[]
+  EventVisitor EventVisitor[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Event {
+  id          String   @id @default(uuid())
+  name        String
+  slug        String
+  description String
+  startDate   DateTime
+  endDate     DateTime
+
+  company   Company @relation(fields: [companyId], references: [id])
+  companyId String
+
+  EventVisitor    EventVisitor[]
+  ticketTemplates TicketTemplate[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model EventVisitor {
+  id         String  @id @default(uuid())
+  providerId String? // Returned External Provider ID
+  status     String  @default("active")
+
+  visitor   Visitor @relation(fields: [visitorId], references: [id])
+  visitorId String
+
+  event   Event  @relation(fields: [eventId], references: [id])
+  eventId String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model TicketTemplate {
+  id             String  @id @default(uuid())
+  name           String
+  primaryColor   String
+  secondaryColor String?
+  successPage    String?
+
+  event   Event  @relation(fields: [eventId], references: [id])
+  eventId String
+
+  TicketTemplateProvider TicketTemplateProvider[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// External provider: OAuth - Internal provider: Form
+model Provider {
+  id   String @id @default(uuid())
+  name String
+
+  TicketTemplateProvider TicketTemplateProvider[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model TicketTemplateProvider {
+  id     String @id @default(uuid())
+  status String @default("active")
+
+  Ticket Ticket[]
+
+  ticketTemplate   TicketTemplate @relation(fields: [ticketTemplateId], references: [id])
+  ticketTemplateId String
+
+  provider   Provider @relation(fields: [providerId], references: [id])
+  providerId String
+
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Ticket {
+  id        String @id @default(uuid())
+  ticketUrl String
+
+  visitor   Visitor @relation(fields: [visitorId], references: [id])
+  visitorId String
+
+  ticketTemplateProvider   TicketTemplateProvider @relation(fields: [ticketTemplateProviderId], references: [id])
+  ticketTemplateProviderId String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+}

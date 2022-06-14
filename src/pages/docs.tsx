@@ -1,8 +1,9 @@
+import { LandingShell } from "components/LandingShell";
 import React from "react";
 
 interface Props {}
 
 export const Docs = ({}: Props) => {
-  return <div></div>;
+  return <LandingShell>Docs</LandingShell>;
 };
 export default Docs;
