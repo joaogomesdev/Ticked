@@ -60,14 +60,7 @@ export const Header = ({}: Props) => {
         />
 
         <Button
-          onClick={
-            session?.user
-              ? handleDashboard
-              : () =>
-                  signIn("github", {
-                    callbackUrl: "/app",
-                  })
-          }
+          onClick={session?.user ? handleDashboard : () => signIn()}
           borderColor={
             colorMode === "light" ? "blackAlpha.900" : "whiteAlpha.900"
           }
