@@ -13,11 +13,13 @@ interface Props {}
 
 export const Cases = ({}: Props) => {
   const { colorMode } = useColorMode();
+
   const isSmallScreen = useBreakpointValue({
+    base: true,
     xs: true,
     sm: true,
     md: true,
-    lg: false,
+    lg: true,
     xl: false,
   });
 
@@ -27,11 +29,22 @@ export const Cases = ({}: Props) => {
         {/* Landing */}
         <Flex
           mt={100}
-          justifyContent="space-between"
+          justifyContent={[
+            "center",
+            "center",
+            "space-between",
+            "space-between",
+            "space-between",
+            "space-between",
+          ]}
           alignItems="center"
           width="full"
         >
-          <Flex flexDir="column" marginLeft="28" maxW="lg">
+          <Flex
+            flexDir="column"
+            marginLeft="28"
+            maxW={["2xl", "2xl", "2xl", "2xl", "lg"]}
+          >
             <Heading fontSize="64" color="brand.purple" fontWeight="bold">
               Cases
             </Heading>
@@ -75,16 +88,16 @@ export const Cases = ({}: Props) => {
         >
           <Image src="/tech02.png" alt="" w="" h="" />
           <Flex
-            flexDir={["column", "column", "column", "row"]}
-            justify="space-between"
+            flexDir={["column", "column", "column", "column", "row"]}
+            justify="center"
             w="full"
             marginX="28"
           >
-            <Heading fontSize="48" fontWeight="bold" w="full">
+            <Heading fontSize="48" fontWeight="bold" w="full" maxW="md">
               Tech Event
             </Heading>
             <Text
-              maxW="2xl"
+              maxW="md"
               fontSize={20}
               color={colorMode === "light" ? "text.light" : "text.main"}
             >
@@ -105,7 +118,8 @@ export const Cases = ({}: Props) => {
         >
           <Image src="/academy01.png" alt="" w="" h="" />
           <Flex
-            flexDir={["column", "column", "column", "row"]}
+            mt={["6", "6", "6", "6", "0"]}
+            flexDir={["column", "column", "column", "column", "row"]}
             justify="space-between"
             w="full"
             marginX={["28", "28"]}
@@ -114,7 +128,7 @@ export const Cases = ({}: Props) => {
               Academic Event
             </Heading>
             <Text
-              maxW="lg"
+              maxW="md"
               fontSize={20}
               color={colorMode === "light" ? "text.light" : "text.main"}
             >
@@ -140,16 +154,16 @@ export const Cases = ({}: Props) => {
         >
           <Image justifySelf="flex-end" src="/enter01.png" alt="" w="" h="" />
           <Flex
-            flexDir={["column", "column", "column", "row"]}
+            flexDir={["column", "column", "column", "column", "row"]}
             justify="space-between"
             w="full"
             marginX="28"
           >
-            <Heading fontSize="48" fontWeight="bold" w="full">
+            <Heading fontSize="48" fontWeight="bold" maxW="sm">
               Entertainment Event
             </Heading>
             <Text
-              maxW="2xl"
+              maxW="md"
               fontSize={20}
               color={colorMode === "light" ? "text.light" : "text.main"}
             >
