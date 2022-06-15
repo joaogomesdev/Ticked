@@ -122,6 +122,7 @@ export const Cases = ({}: Props) => {
             flexDir={["column", "column", "column", "column", "row"]}
             justify="space-between"
             w="full"
+            alignItems="center"
             marginX={["28", "28"]}
           >
             <Heading fontSize="48" fontWeight="bold" maxW="xs">
@@ -157,6 +158,7 @@ export const Cases = ({}: Props) => {
             flexDir={["column", "column", "column", "column", "row"]}
             justify="space-between"
             w="full"
+            alignItems="center"
             marginX="28"
           >
             <Heading fontSize="48" fontWeight="bold" maxW="sm">
