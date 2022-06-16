@@ -39,6 +39,9 @@ const Home: NextPage = () => {
               variant="solid"
               size="md"
               bgColor="#FF7057"
+              _hover={{
+                bgColor: "#ff5233",
+              }}
               width={28}
               mt="8"
               fontWeight="bold"
