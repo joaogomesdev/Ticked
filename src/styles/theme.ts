@@ -3,6 +3,7 @@ import { theme as chakraTheme } from "@chakra-ui/react";
 const theme = {
   ...chakraTheme,
   colors: {
+    ...chakraTheme.colors,
     brand: {
       green: "#1AAE9F",
       orange: "#FF7057",
@@ -13,9 +14,9 @@ const theme = {
       main: "#E5E7EB",
       light: "#858C92",
     },
-    gray: {
-      "800": "#000000",
-    },
+    // gray: {
+    //   "800": "#000000",
+    // },
   },
   fonts: {
     ...chakraTheme.fonts,

@@ -21,12 +21,12 @@ interface Props {
 
 const DashboardShell = ({ children }: Props) => {
   const router = useRouter();
-  const { colorMode, toggleColorMode } = useColorMode();
+  const { colorMode, toggleColorMode, setColorMode } = useColorMode();
 
   const { data: session } = useSession();
   if (session) {
     return (
-      <Box backgroundColor="gray.100" h="100vh">
+      <Box h="100vh">
         <Flex mb={16} w="full" borderTop="5px solid #FF7057">
           <Flex
             alignItems="center"

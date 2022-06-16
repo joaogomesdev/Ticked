@@ -38,7 +38,7 @@ const Home: NextPage = () => {
             <Button
               variant="solid"
               size="md"
-              bgColor="brand.orange"
+              bgColor="#FF7057"
               width={28}
               mt="8"
               fontWeight="bold"
@@ -53,12 +53,7 @@ const Home: NextPage = () => {
         </Flex>
 
         <Flex mt={280} flexDirection="row" paddingLeft={28}>
-          <Heading
-            fontSize="48"
-            color="whiteAlpha.900"
-            fontWeight="medium"
-            maxW="lg"
-          >
+          <Heading fontSize="48" fontWeight="medium" maxW="lg">
             The <span style={{ color: "#6558F5" }}>best</span> ticket experience
           </Heading>
 
@@ -99,7 +94,6 @@ const Home: NextPage = () => {
               <Heading
                 marginRight={100}
                 fontSize="48"
-                color="whiteAlpha.900"
                 fontWeight="medium"
                 maxW="lg"
               >
@@ -152,7 +146,6 @@ const Home: NextPage = () => {
               <Heading
                 marginRight={100}
                 fontSize="48"
-                color="whiteAlpha.900"
                 fontWeight="medium"
                 maxW="lg"
               >
@@ -200,7 +193,7 @@ const Home: NextPage = () => {
             justifyContent="center"
             alignItems="center"
           >
-            <Heading fontSize="48" color="whiteAlpha.900" fontWeight="medium">
+            <Heading fontSize="48" fontWeight="medium">
               {"🎉"} Generate and{" "}
               <span style={{ color: "#F7C325", fontWeight: "bold" }}>
                 enjoy
