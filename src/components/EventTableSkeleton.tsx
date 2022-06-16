@@ -58,7 +58,7 @@ const EventTableSkeleton = () => {
   return (
     <Table backgroundColor="">
       <thead>
-        <Tr>
+        <Tr bgColor="transparent">
           <Th>Name</Th>
           <Th>Description</Th>
           <Th>Start date</Th>

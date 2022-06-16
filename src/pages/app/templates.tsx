@@ -22,8 +22,9 @@ const Templates = ({}: Props) => {
 
   return (
     <DashboardShell>
-      Not signed in <br />
-      <button onClick={() => signIn()}>Sign in</button>
+      <TicketTemplatesTableHeader />
+
+      <TicketTemplatesTableSkeleton />
     </DashboardShell>
   );
 };

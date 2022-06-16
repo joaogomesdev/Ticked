@@ -49,7 +49,7 @@ const TicketTemplatesTableSkeleton = () => {
   return (
     <Table>
       <thead>
-        <Tr>
+        <Tr bgColor="transparent">
           <Th>Name</Th>
           <Th>Primary Color</Th>
           <Th>Success Page URL</Th>

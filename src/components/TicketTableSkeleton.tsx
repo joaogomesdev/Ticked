@@ -49,7 +49,7 @@ const TicketTableSkeleton = () => {
   return (
     <Table>
       <thead>
-        <Tr>
+        <Tr bgColor="transparent">
           <Th>Event</Th>
           <Th>Visitor</Th>
           <Th>URL</Th>
