@@ -1,9 +1,20 @@
 import React from "react";
-import { useSession, signIn, signOut } from "next-auth/react";
-import { Flex } from "@chakra-ui/react";
 import DashboardShell from "components/DashboardShell";
 import { TicketTemplatesTableHeader } from "components/TicketTemplatesTableHeader";
 import { TicketTemplatesTableSkeleton } from "components/TicketTemplatesTableSkeleton";
+import { GetServerSideProps } from "next";
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  if (!context.req.cookies["next-auth.session-token"]) {
+    return {
+      redirect: {
+        permanent: false,
+        destination: "/",
+      },
+    };
+  }
+  return { props: {} };
+};
 
 interface Props {}
 

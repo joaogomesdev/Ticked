@@ -11,7 +11,6 @@ import {
   IconButton,
   useColorMode,
 } from "@chakra-ui/react";
-import { redirect } from "next/dist/server/api-utils";
 import { useRouter } from "next/router";
 import { RiMoonClearFill, RiSunFill } from "react-icons/ri";
 
@@ -21,7 +20,8 @@ interface Props {
 
 const DashboardShell = ({ children }: Props) => {
   const router = useRouter();
-  const { colorMode, toggleColorMode, setColorMode } = useColorMode();
+
+  const { colorMode, toggleColorMode } = useColorMode();
 
   const { data: session } = useSession();
   if (session) {
@@ -98,7 +98,7 @@ const DashboardShell = ({ children }: Props) => {
     );
   }
 
-  return <h1>You are not logged</h1>;
+  return <h1>U are not Allowed</h1>;
 };
 
 export default DashboardShell;

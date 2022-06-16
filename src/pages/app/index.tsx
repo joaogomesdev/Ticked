@@ -6,7 +6,20 @@ import { EventTableHeader } from "components/EventTableHeader";
 import { EventTableSkeleton } from "components/EventTableSkeleton";
 import useSWR from "swr";
 import EmptyEventState from "components/EmpyEventTable";
-import { Event } from "@prisma/client";
+
+import { GetServerSideProps } from "next";
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  if (!context.req.cookies["next-auth.session-token"]) {
+    return {
+      redirect: {
+        permanent: false,
+        destination: "/",
+      },
+    };
+  }
+  return { props: {} };
+};
 
 interface Props {}
 
