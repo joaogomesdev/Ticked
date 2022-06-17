@@ -5,7 +5,10 @@ import { TicketTemplatesTableSkeleton } from "components/TicketTemplatesTableSke
 import { GetServerSideProps } from "next";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  if (!context.req.cookies["next-auth.session-token"]) {
+  if (
+    !context.req.cookies["next-auth.session-token"] ||
+    !context.req.cookies["__Secure-next-auth.session-token"]
+  ) {
     return {
       redirect: {
         permanent: false,
